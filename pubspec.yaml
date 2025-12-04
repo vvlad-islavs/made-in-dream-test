@@ -1,0 +1,80 @@
+name: made_in_dream_test
+description: "test task to \"made in dream\""
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_svg: ^2.2.0
+
+  cupertino_icons: ^1.0.8
+  auto_route: ^10.2.2
+  meta: ^1.14.0
+
+  talker_flutter: ^5.1.0
+  talker_bloc_logger: ^5.1.0
+  talker_logger: ^5.1.0
+  talker_dio_logger: ^5.1.0
+
+  get_it: ^9.0.5
+  provider: ^6.1.5
+  flutter_bloc: ^9.1.1
+  equatable: ^2.0.7
+  bloc: ^9.0.0
+
+  collection: ^1.19.1
+  permission_handler: ^12.0.1
+  gap: ^3.0.1
+  flutter_compass: ^0.8.1
+  json_annotation: ^4.9.0
+  dartz: ^0.10.1
+  path: ^1.9.1
+  rxdart: ^0.28.0
+  uuid: ^4.5.1
+  animated_transform: ^1.0.6
+  http: ^1.5.0
+  fvm: ^4.0.1
+  envied: ^1.2.0
+  shimmer: ^3.0.0
+  cookie_jar: ^4.0.8
+  dio_cookie_manager: ^3.2.0
+  connectivity_plus: ^7.0.0
+  dio: ^5.9.0
+  shared_preferences: ^2.5.3
+  flutter_dotenv: ^6.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.4.15
+  auto_route_generator: ^10.2.2
+  dart_code_metrics_presets: ^2.20.0
+  json_serializable: any
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - .env
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
