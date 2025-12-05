@@ -14,7 +14,6 @@ class _PulsingDotsState extends State<PulsingDots> with TickerProviderStateMixin
 
   final int dotCount = 3;
   final _canShow = ValueNotifier(false);
-  final Duration _delayBetweenAnim = const Duration(milliseconds: 130);
   final Duration _animDuration = const Duration(milliseconds: 300);
 
   @override

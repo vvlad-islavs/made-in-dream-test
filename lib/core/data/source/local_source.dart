@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:get_it/get_it.dart';
 import 'package:made_in_dream_test/core/core.dart';

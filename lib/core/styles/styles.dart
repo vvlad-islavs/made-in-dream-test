@@ -6,5 +6,4 @@ export 'app_spacings.dart';
 export 'button_sizes.dart';
 export 'button_styles.dart';
 export 'theme.dart';
-export 'trailing_button_sizes.dart';
 export 'app_animations.dart';

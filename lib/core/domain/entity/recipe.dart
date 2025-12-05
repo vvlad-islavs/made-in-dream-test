@@ -62,7 +62,6 @@ class Recipe {
   }
 
   static List<Ingredient> _ingredientsFromJson(Map<String, dynamic>? json) {
-    debugPrint('IngrJson: $json');
     final list1 = (json?['ingredients_one'] as List<dynamic>? ?? []);
     final list2 = (json?['ingredients_two'] as List<dynamic>? ?? []);
 

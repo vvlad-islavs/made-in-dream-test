@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:get_it/get_it.dart';
 import 'package:made_in_dream_test/core/core.dart';
 import 'package:talker_flutter/talker_flutter.dart';
@@ -23,9 +21,9 @@ class RecipesRepository extends AbstractRecipesRepository {
       if (newItems?.isNotEmpty ?? false) {
         items = await _localSource.saveItems(items: newItems);
       }
-    } catch (e, st) {
+    } catch (e) {
       isError = true;
-      GetIt.I<Talker>().handle(e, st);
+      GetIt.I<Talker>().handle(e);
     }
 
     return (items: items ??= await _localSource.getItems() ?? <Map<String, dynamic>>[], isError: isError);

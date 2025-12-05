@@ -116,6 +116,7 @@ class _RecipesScreenState extends State<RecipesScreen> with PaginationMixin<Reci
                               _buildErrorState(context),
                               // Состояние пустого списка
                               _buildEmptyState(context),
+                              // Список рецептов
                               ListView.separated(
                                 itemCount:
                                     filteredItems.length +
@@ -159,7 +160,7 @@ class _RecipesScreenState extends State<RecipesScreen> with PaginationMixin<Reci
                             ],
                           ),
                         ),
-
+                        // Заголок с поиском, фильтром и сменой темы
                         Positioned(top: 0, right: 0, left: 0, child: _buildHead(context, state)),
                         if (state.isLoading && mounted)
                           Positioned(
@@ -182,17 +183,21 @@ class _RecipesScreenState extends State<RecipesScreen> with PaginationMixin<Reci
 
   Stack _buildHead(BuildContext context, RecipesState state) => Stack(
     children: [
+      // Статус (онлайн/офлайн)
       _buildStatus(context, state),
+      // Кнопка фильтра
       Positioned(
         top: 12,
         right: 16,
         child: Material(color: AppColors.transparent, child: _buildFilterButton(context)),
       ),
+      // Кнопка темы
       Positioned(
         top: 12,
         right: 72,
         child: Material(color: AppColors.transparent, child: _buildThemeButton(context)),
       ),
+      // Поиск
       Positioned(
         top: 12,
         left: 16,

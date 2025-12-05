@@ -1,4 +1,3 @@
-abstract class Source{
-
+abstract class Source {
   Future<List<Map<String, dynamic>>?> getItems();
 }
