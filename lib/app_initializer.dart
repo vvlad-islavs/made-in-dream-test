@@ -32,7 +32,11 @@ class AppInitializer {
   }
 
   static Future<void> _initializeApi() async {
-    final dio = await DioApiClient.create(baseUrl: Env.baseUrl);
+    final dio = await DioApiClient.create(
+      baseUrl: 'https://madeindream.com',
+      // Or create .env: BASE_URL=https://madeindream.com
+      //Env.baseUrl
+    );
 
     GetIt.I.registerSingleton<Dio>(dio.dio);
   }
