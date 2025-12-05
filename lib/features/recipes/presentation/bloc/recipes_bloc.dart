@@ -12,25 +12,24 @@ class RecipesBloc extends Bloc<RecipesEvent, RecipesState> {
   final AbstractRecipesUsecase _usecase;
 
   RecipesBloc(this._usecase) : super(RecipesState(recipes: [])) {
-    on<RecipesUpdateAllAndGetFirstItems>((event, emit) async {
-      emit(state.copyWith(isLoading: true, recipes: [], isAllLoaded: false));
+    on<RecipesUpdateAllAndGetItems>((event, emit) async {
+      emit(state.copyWith(isLoading: true, recipes: []));
 
-      final result = await _usecase.getAllItems();
+      final result = await _usecase.tryUpdateAndGetAllItems();
 
-      if (result.isError!= state.isError) {
+      if (result.isError != state.isError) {
         emit(state.copyWith(isError: result.isError));
       }
 
-      add(RecipesGetMoreEvent(itemsCount: event.itemsCount));
+      emit(state.copyWith(isLoading: false, recipes: result.recipes));
     });
-    on<RecipesGetMoreEvent>((event, emit) async {
-      if (state.isAllLoaded) return;
 
-      emit(state.copyWith(isLoading: true));
+    on<RecipesGetAllItemsEvent>((event, emit) async {
+      emit(state.copyWith(isLoading: true, recipes: []));
 
-      final result = await _usecase.getMoreRecipes(loadedRecipes: state.recipes, itemCount: event.itemsCount);
-      debugPrint('LastId: ${result.recipes.lastOrNull?.id ?? '-1'}');
-      emit(state.copyWith(recipes: result.recipes, isAllLoaded: result.isAllLoaded));
+      final result = await _usecase.getAllItems();
+
+      emit(state.copyWith(isLoading: false, recipes: result));
     });
   }
 }

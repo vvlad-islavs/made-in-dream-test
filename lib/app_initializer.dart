@@ -25,7 +25,10 @@ class AppInitializer {
     WidgetsFlutterBinding.ensureInitialized();
     await dotenv.load(fileName: ".env");
 
-    AppThemeManager.initialize(brightness: Brightness.dark);
+    final sp = await SharedPreferences.getInstance();
+    GetIt.I.registerLazySingleton<SharedPreferences>(() => sp);
+
+    AppThemeManager.initialize(brightness: (sp.getBool('isDark') ?? true) ? Brightness.dark : Brightness.light);
   }
 
   static Future<void> _initializeApi() async {
@@ -35,9 +38,6 @@ class AppInitializer {
   }
 
   static Future<void> _initializeServices() async {
-    final sp = await SharedPreferences.getInstance();
-    GetIt.I.registerLazySingleton<SharedPreferences>(() => sp);
-
     final talker = TalkerFlutter.init();
     GetIt.I.registerSingleton(talker);
 

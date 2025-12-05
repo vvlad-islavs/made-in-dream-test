@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:made_in_dream_test/core/core.dart';
 import 'package:made_in_dream_test/features/features.dart';
@@ -20,27 +21,20 @@ class Preview extends StatelessWidget {
           highlightColor: AppColors.highlightShimmerColor,
           child: Container(color: Colors.white),
         ),
-        Image.network(
-          imageUrl ?? '',
-          filterQuality: FilterQuality.high,
-          cacheHeight: 512,
-          cacheWidth: 512,
-          errorBuilder: (context, _, _) => Container(
+        CachedNetworkImage(
+          imageUrl: imageUrl ?? '',
+          placeholder: (context, url) => Shimmer.fromColors(
+            baseColor: AppColors.baseShimmerColor,
+            highlightColor: AppColors.highlightShimmerColor,
+            child: Container(color: Colors.white),
+          ),
+          errorWidget: (context, url, error) => Container(
             color: context.appColors.secondary.shade300,
             alignment: Alignment.center,
             child: const Icon(Icons.broken_image, size: 32, color: Colors.grey),
           ),
-          frameBuilder: (context, widget, frame, wasSynchronouslyLoaded) {
-            if (frame != null) {
-              return widget;
-            }
-
-            return Shimmer.fromColors(
-              baseColor: AppColors.baseShimmerColor,
-              highlightColor: AppColors.highlightShimmerColor,
-              child: Container(color: Colors.white),
-            );
-          },
+          memCacheHeight: 512,
+          memCacheWidth: 512,
         ),
         Container(
           decoration: BoxDecoration(color: context.appColors.secondary.shade300),

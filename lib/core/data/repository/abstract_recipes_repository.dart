@@ -2,10 +2,10 @@ abstract class AbstractRecipesRepository {
   /// Получает весь список рецептов.
   ///
   /// Пытается обратиться к удаленной БД, если ответ приходит - записывает в локальную, иначе берет из локальной.
-  Future<({List<Map<String, dynamic>>items, bool isError})> getAllItems();
+  Future<({List<Map<String, dynamic>> items, bool isError})> tryUpdateAndGetAllItems();
 
-  /// Получает список рецептов после [id].
+  /// Получает весь список рецептов.
   ///
-  /// Обращается только к локальной БД.
-  Future<({List<Map<String, dynamic>> items, bool isAllLoaded})> getItemsFromId({required String? id, int itemsCount = 5});
+  /// Берет из локальной.
+  Future<List<Map<String, dynamic>>> getAllItems();
 }

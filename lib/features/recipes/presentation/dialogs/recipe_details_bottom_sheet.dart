@@ -58,7 +58,7 @@ class _RecipeDetailsBottomSheetState extends State<RecipeDetailsBottomSheet> {
                       if (widget.recipe.title != null)
                         Padding(
                           padding: const EdgeInsets.only(bottom: 24.0),
-                          child: Text(widget.recipe.title!, style: context.appPoppinsTextTheme.labelMedium),
+                          child: Text(widget.recipe.title!, style: context.appPoppinsTextTheme.titleMedium),
                         ),
                       if (widget.recipe.text != null)
                         Padding(
