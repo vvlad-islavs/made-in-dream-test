@@ -58,7 +58,7 @@ class Recipe {
 
   static String? _prepTimeToJson(String? value) {
     if (value == null) return null;
-    return '$value минут';
+    return value;
   }
 
   static List<Ingredient> _ingredientsFromJson(Map<String, dynamic>? json) {
