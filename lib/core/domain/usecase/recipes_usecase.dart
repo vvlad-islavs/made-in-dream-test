@@ -6,16 +6,22 @@ class RecipesUsecase extends AbstractRecipesUsecase {
   RecipesUsecase({required AbstractRecipesRepository repository}) : _repository = repository;
 
   @override
-  Future<List<Recipe>> getAllItems() async {
-    final allRecipesMap = await _repository.getAllItems();
+  Future<({List<Recipe> recipes, bool isError})> getAllItems() async {
+    final result = await _repository.getAllItems();
 
-    return allRecipesMap.map((json) => Recipe.fromJson(json)).toList();
+    return (recipes: result.items.map((json) => Recipe.fromJson(json)).toList(), isError: result.isError);
   }
 
   @override
-  Future<List<Recipe>>  getItemsFromId({required int? id}) async {
-    final allRecipesMap = await _repository.getItemsFromId(id: id);
+  Future<({List<Recipe> recipes, bool isAllLoaded})> getMoreRecipes({
+    required List<Recipe>? loadedRecipes,
+    int itemCount = 5,
+  }) async {
+    final result = await _repository.getItemsFromId(id: loadedRecipes?.lastOrNull?.id, itemsCount: itemCount);
 
-    return allRecipesMap.map((json) => Recipe.fromJson(json)).toList();
+    return (
+      recipes: <Recipe>[...loadedRecipes ?? [], ...result.items.map((json) => Recipe.fromJson(json))],
+      isAllLoaded: result.isAllLoaded,
+    );
   }
 }

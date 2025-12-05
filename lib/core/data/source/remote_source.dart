@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -9,11 +10,9 @@ class RemoteSource implements Source {
   RemoteSource({required Dio dio}) : _dio = dio;
 
   @override
-  Future<List<Map<String, dynamic>>?> getItems({int? id}) async {
+  Future<List<Map<String, dynamic>>?> getItems() async {
     final response = await _dio.get('/index.php?route=api/app/getRecipes');
 
-    log('Status: ${response.statusCode}', name: runtimeType.toString());
-    return response.data['news'];
+    return ((jsonDecode(response.data))['news'] as List).map((e) => e as Map<String, dynamic>).toList();
   }
 }
-

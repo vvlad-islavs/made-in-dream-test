@@ -12,7 +12,7 @@ class LocalSource implements Source {
   LocalSource({required SharedPreferences sp}) : _sp = sp;
 
   @override
-  Future<List<Map<String, dynamic>>?> getItems({int? id}) async {
+  Future<List<Map<String, dynamic>>?> getItems() async {
     final items = _sp.getStringList(_listKey);
 
     return items?.map((element) => jsonDecode(element) as Map<String, dynamic>).toList();

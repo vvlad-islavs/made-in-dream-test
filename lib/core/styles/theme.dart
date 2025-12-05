@@ -590,8 +590,12 @@ class _AppColorsExtension extends ThemeExtension<_AppColorsExtension> {
   })  : transparent = _AppColors.transparent,
         white = _AppColors.white,
         googleLogIn = _AppColors.googleLogIn,
+        baseShimmer = _AppColors.baseShimmerColor,
+        highlightShimmer = _AppColors.highlightShimmerColor,
         facebookLogIn = _AppColors.facebookLogIn;
 
+  final Color highlightShimmer;
+  final Color baseShimmer;
   final Color transparent;
   final Color white;
   final Color googleLogIn;
@@ -866,4 +870,6 @@ abstract final class _AppColors {
   static const primarySecondDark = Color(0xff245146);
   static const primarySecond300Dark = Color(0xff2ff3cf);
   static const secondarySecond = Color(0xffc3b252);
+  static const baseShimmerColor = Color(0xff1E2022);
+  static const highlightShimmerColor = Color(0xff26272A);
 }

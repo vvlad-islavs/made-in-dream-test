@@ -2,6 +2,12 @@ part of 'recipes_bloc.dart';
 
 sealed class RecipesEvent {}
 
-class RecipesGetAllEvent extends RecipesEvent {}
+class RecipesUpdateAllAndGetFirstItems extends RecipesEvent {final int itemsCount;
 
-class RecipesGetFromLastIdEvent extends RecipesEvent {}
+  RecipesUpdateAllAndGetFirstItems({this.itemsCount = 5});}
+
+class RecipesGetMoreEvent extends RecipesEvent {
+  final int itemsCount;
+
+  RecipesGetMoreEvent({this.itemsCount = 5});
+}
