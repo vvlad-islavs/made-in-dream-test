@@ -11,3 +11,5 @@ Base start - git clone..., pub get..., select device (android or windows), run
 
 Everything is done except adaptive design for the tablet, but it’s still adaptive.
 Pagination items count changed to 5 from 10, cause API has only ten items
+
+debug APK is in releases
